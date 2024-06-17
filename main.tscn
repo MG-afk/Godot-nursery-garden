@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc6584wxm6qao"]
+[gd_scene load_steps=7 format=3 uid="uid://cc6584wxm6qao"]
 
 [ext_resource type="Script" path="res://gameManger.gd" id="1_lcyem"]
 [ext_resource type="PackedScene" uid="uid://db42lvdt1ieer" path="res://tree/tree.tscn" id="2_amrhi"]
+[ext_resource type="Texture2D" uid="uid://bnlgam0c2yhi3" path="res://coin.png" id="6_lx82p"]
 [ext_resource type="Texture2D" uid="uid://uqbbsirl50bs" path="res://Tlo.png" id="6_mwx4s"]
 [ext_resource type="Texture2D" uid="uid://np6n8qyiqcjw" path="res://seed.png" id="7_yv4lc"]
 [ext_resource type="Texture2D" uid="uid://nh66hthcmxpw" path="res://axe.png" id="8_o4h2c"]
@@ -24,10 +25,10 @@ zoom = Vector2(0.65, 0.65)
 follow_viewport_enabled = true
 
 [node name="Text" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = -876.0
-offset_top = -486.0
-offset_right = -251.0
-offset_bottom = -328.0
+offset_left = -786.0
+offset_top = -484.0
+offset_right = -161.0
+offset_bottom = -326.0
 theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "TEXT"
@@ -45,3 +46,7 @@ offset_top = -156.0
 offset_right = 881.0
 offset_bottom = -20.0
 icon = ExtResource("8_o4h2c")
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(-824, -445)
+texture = ExtResource("6_lx82p")

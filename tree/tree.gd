@@ -1,14 +1,15 @@
+class_name Wood
 extends Node2D
 
 var treeIsCut: bool = false
-var growth_time = 5.0
+var growth_time = 10.0
 var timer = 0.0
 var growing = false
 var stagesOfTree: Array[Texture2D] = []
 var stage = -1
 
 signal growed
-signal cut_down
+signal cut_down(tree: Wood)
 
 func _ready():
 	add_to_group("trees")
@@ -37,10 +38,11 @@ func grow():
 		var sprite = $Sprite2D
 		sprite.texture = stagesOfTree[stage]
 		adjust_size(sprite)
-
+		growth_time *= 1.5
 		growed.emit()
 		timer = 0.0
 		$Slider.value = 0
+		$Slider.max_value = growth_time
 	else:
 		growing = false
 		$Slider.queue_free()
@@ -49,11 +51,14 @@ func adjust_size(sprite: Sprite2D):
 	sprite.position.y = -sprite.texture.get_height() / 2
 	get_collision_shape().shape.extents = Vector2(sprite.texture.get_width(), sprite.texture.get_height()) 
 
-func cut_down_tree():
+func cut_down_tree(resources_manager: ResourcesManager):
 	if not treeIsCut:
+		remove_from_group("trees")
 		treeIsCut = true
 		growing = false
-		stage = -1
+		resources_manager.increase_gold(5 * (stage + 1))
+		cut_down.emit(self)
+		queue_free()
 		
 func get_collision_shape() -> CollisionShape2D:
 	return $"Area2D/CollisionShape2D"

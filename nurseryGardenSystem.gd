@@ -4,16 +4,17 @@ var babyTree: PackedScene
 var min_distance: float = 50.0
 var planted_positions: Array[Vector2] = []
 var stageOfTree: Array[Texture2D]
+var resourcesManager: ResourcesManager
 
-func initialize():
-	print("Initialized")
+func initialize(resourcesManager: ResourcesManager):
+	self.resourcesManager = resourcesManager
 
 	for i in range(1, 4):
 		stageOfTree.append(load("res://tree/tree%d.png" % i))
 		
 	babyTree = load("res://tree/tree.tscn")
 
-func try_to_place_tree(increase_gold: Callable, parent: Node2D, new_position: Vector2) -> bool:
+func try_to_place_tree(parent: Node2D, new_position: Vector2) -> bool:
 	if is_position_too_close(new_position):
 		return false
 	
@@ -23,10 +24,17 @@ func try_to_place_tree(increase_gold: Callable, parent: Node2D, new_position: Ve
 	parent.add_child(newTree)
 	newTree.init(stageOfTree)
 	newTree.start_growth_timer()
-	newTree.growed.connect(increase_gold)
+	newTree.growed.connect(get_gold_by_growing)
+	newTree.cut_down.connect(_cut_tree)
 			
 	planted_positions.append(new_position)
 	return true
+	
+func _cut_tree(tree: Wood):
+	planted_positions.erase(tree.position)
+	
+func get_gold_by_growing():
+	resourcesManager.increase_gold(1)
 	
 func is_position_too_close(new_position: Vector2) -> bool:
 	for pos in planted_positions:
