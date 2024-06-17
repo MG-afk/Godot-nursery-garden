@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31i7dvjgr8r3"
-path="res://.godot/imported/sadzonka.png-89cc13f3d506c2e0549cfa086f1a7091.ctex"
+uid="uid://bv7c1yckq3a22"
+path="res://.godot/imported/tree2.png-3a5566dad9f8c0c213ac40b8b6192896.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sadzonka.png"
-dest_files=["res://.godot/imported/sadzonka.png-89cc13f3d506c2e0549cfa086f1a7091.ctex"]
+source_file="res://tree/tree2.png"
+dest_files=["res://.godot/imported/tree2.png-3a5566dad9f8c0c213ac40b8b6192896.ctex"]
 
 [params]
 

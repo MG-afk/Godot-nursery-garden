@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc6584wxm6qao"]
+
+[ext_resource type="Script" path="res://gameManger.gd" id="1_lcyem"]
+[ext_resource type="PackedScene" uid="uid://db42lvdt1ieer" path="res://tree/tree.tscn" id="2_amrhi"]
+[ext_resource type="Texture2D" uid="uid://uqbbsirl50bs" path="res://Tlo.png" id="6_mwx4s"]
+[ext_resource type="Texture2D" uid="uid://np6n8qyiqcjw" path="res://seed.png" id="7_yv4lc"]
+[ext_resource type="Texture2D" uid="uid://nh66hthcmxpw" path="res://axe.png" id="8_o4h2c"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("goldText", "seedButton", "axeButton")]
+script = ExtResource("1_lcyem")
+sadzonka = ExtResource("2_amrhi")
+goldText = NodePath("CanvasLayer/Text")
+seedButton = NodePath("CanvasLayer/SeedButton")
+axeButton = NodePath("CanvasLayer/AxeButton")
+
+[node name="Tlo" type="Sprite2D" parent="."]
+position = Vector2(-11, 2)
+texture = ExtResource("6_mwx4s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.65, 0.65)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = -876.0
+offset_top = -486.0
+offset_right = -251.0
+offset_bottom = -328.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "TEXT"
+
+[node name="SeedButton" type="Button" parent="CanvasLayer"]
+offset_left = 748.0
+offset_top = -295.0
+offset_right = 884.0
+offset_bottom = -159.0
+icon = ExtResource("7_yv4lc")
+
+[node name="AxeButton" type="Button" parent="CanvasLayer"]
+offset_left = 745.0
+offset_top = -156.0
+offset_right = 881.0
+offset_bottom = -20.0
+icon = ExtResource("8_o4h2c")
